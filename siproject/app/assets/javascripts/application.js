@@ -17,4 +17,9 @@
 //= require activestorage
 //= require turbolinks
 //= require materialize-sprockets
+//= require bootstrap-datetimepicker
 //= require_tree .
+
+$(document).on("focus", "[data-behaviour~='datepicker']", function(e){
+    $(this).datepicker({"format": "dd/mm/yyyy", "weekStart": 1, "autoclose": true})
+});

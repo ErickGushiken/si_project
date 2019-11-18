@@ -2,13 +2,20 @@
     <div class="card-login">
         <div class="form-container">
             <div class="image-container">
-                <%= image_tag 'cartoon-shop.jpg', class:'image' %>
+            <% if @user_role==1 %>
+                <%= image_tag 'seller-cartoon.png', class:'image' %>
+            <% end %>            
+            <% if @user_role==0 %>
+                <%= image_tag 'shop-cartoon.png', class:'image' %>
+            <% end %>
+            <br>
+            
             </div>
             <div class="form">
                 <%= render 'form', user: @user, user_role: @user_role %>   
             </div>
         </div>
-
+        <div class="horizontal-line"></div>
         <div class="options-row">
             <% if @user_role==0 %>
                 <%= link_to "Cadastre-se como comprador", signup_path(:type=> "consumer"), class:"waves-effect waves-light btn-small center-align" %> 
@@ -17,8 +24,8 @@
                 <%= link_to "Cadastre-se como vendedor", signup_path(:type=> "seller"), class:"waves-effect waves-light btn-small" %> 
             <% end %> 
             <br>
-            <br>
             <%= link_to 'Voltar', root_path, class:"waves-effect waves-light btn-small" %>
+            <br>
         </div> 
     </div>
 </div>

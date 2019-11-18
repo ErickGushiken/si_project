@@ -17,6 +17,8 @@ body #login{
 
 .image-container{
     width: 40%;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .form{
@@ -49,6 +51,12 @@ body #login{
     width: 60%;
     margin-left: 20%;
     // padding: 10%;
+}
+
+.horizontal-line{
+    background-color: red;
+    height:2px;
+    width:50px;    
 }
 
 .btn-small{

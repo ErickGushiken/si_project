@@ -22,17 +22,27 @@
   </div>
 
   <div class="field">
-    <%= form.label :documento %>
-    <%= form.number_field :documento %>
+    <%= form.label 'Data de nascimento: ' %>
+    <%= form.text_field :data_nasc, 'data-behaviour' => 'datepicker' %><br />
+  </div>  
+
+  <div class="field">
+    <% if @user_role==0 %>
+      <%= form.label 'CPF:' %>
+    <% end %>
+    <% if @user_role==1 %>
+      <%= form.label 'CNPJ: ' %>
+    <% end %>
+    <%= form.text_field :documento %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
+  <%= form.label 'Senha: ' %>
     <%= form.password_field :password %>
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation %>
+  <%= form.label 'Confirmação de senha: ' %>
     <%= form.password_field :password_confirmation %>
   </div>
 
