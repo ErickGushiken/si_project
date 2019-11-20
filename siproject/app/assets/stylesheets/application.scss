@@ -30,3 +30,15 @@
   vertical-align: baseline;
   background: transparent;
 }
+
+.header-container{
+  padding: 1rem;
+  a:hover, a:focus {
+    color: #005580;
+    background-color: #e65100!important;
+  }  
+}
+
+.section{
+  min-height: 80%;
+}

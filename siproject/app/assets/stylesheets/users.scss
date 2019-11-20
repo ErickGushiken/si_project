@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body #login{
+body #sign-up{
     z-index:5;
     background-color: #ee9617;
     background-image: linear-gradient(315deg, #ee9617 0%, #fe5858 74%);
@@ -17,8 +17,17 @@ body #login{
 
 .image-container{
     width: 40%;
-    margin-top: auto;
-    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    a:hover, a:focus {
+        color: #e65100;
+        background-color:white!important;
+    } 
+}
+
+.root-logo{
+    font-size: 3rem;
 }
 
 .form{
@@ -47,7 +56,7 @@ body #login{
     align-items: center;
 }
 
-.card-login{
+.card-sign-up{
     width: 60%;
     margin-left: 20%;
     // padding: 10%;

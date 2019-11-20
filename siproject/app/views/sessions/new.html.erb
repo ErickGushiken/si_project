@@ -1,15 +1,28 @@
-<p id="alert"><%= alert %></p>
-<h1>Login</h1>
-<%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+<div id="login">
+  <div class="card-login">
+    <div class="form-container-session">
+      <h2 class="header center orange-text">Marktplatz</h2>
+      <%= form_tag(sessions_path, {class: 'form-session'}) do |form| %>
+        <div class="field">
+          <%= label_tag :email %>
+          <%= text_field_tag :email %>
+        </div>
+        <div class="field">
+          <%= label_tag :password %>
+          <%= password_field_tag :password %>
+        </div>
+        <div class="actions options-row">
+          <%= submit_tag "Login", class:"waves-effect waves-light btn-small" %>
+        </div>
+      <% end %>
+      </div>
+      <div class="horizontal-line"></div>
+      <div class="options-row">
+        Ainda não tenho uma conta <%= link_to 'Cadastre-se', new_user_path, class:"waves-effect waves-light btn-small" %>
+        <br>
+        <%= link_to 'Voltar', root_path, class:"waves-effect waves-light btn-small" %>
+        <br>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
-<% end %>
+</div>

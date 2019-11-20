@@ -1,3 +1,20 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.text-justify{
+    text-align: justify;
+}
+
+.network-icon{
+    width: 1rem;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.link{
+    width: fit-content;
+    a:hover, a:focus {
+        color: #005580;
+        background-color: #e65100!important;
+    }
+}

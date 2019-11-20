@@ -1,15 +1,14 @@
-<div id="login">
-    <div class="card-login">
+<div id="sign-up">
+    <div class="card-sign-up">
         <div class="form-container">
             <div class="image-container">
-            <% if @user_role==1 %>
-                <%= image_tag 'seller-cartoon.png', class:'image' %>
-            <% end %>            
-            <% if @user_role==0 %>
-                <%= image_tag 'shop-cartoon.png', class:'image' %>
-            <% end %>
-            <br>
-            
+                <%= link_to "Marktplatz", root_path, class:"header center orange-text root-logo" %> 
+                <% if @user_role==1 %>
+                    <%= image_tag 'seller-cartoon.png', class:'image' %>
+                <% end %>            
+                <% if @user_role==0 %>
+                    <%= image_tag 'shop-cartoon.png', class:'image' %>
+                <% end %>
             </div>
             <div class="form">
                 <%= render 'form', user: @user, user_role: @user_role %>   

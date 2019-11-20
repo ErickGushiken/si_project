@@ -1,15 +1,14 @@
  <nav class="nav-extended orange darken-4">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Marktplatz</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <div class="nav-wrapper header-container">
+      <a href="/" class="brand-logo">Marktplatz</a>
+      <ul id="nav-mobile" class="right">
         <% if current_user %>
             <li>Bem vindo, <%= current_user.nome %></li>
-            <li><%= link_to "Log Out", logout_path %></li>
+            <li><%= link_to "Sair", logout_path %></li>
         <% else %>
-            <%= link_to "Sign Up", signup_path(:type=> "consumer") %>
-            <li> or</li>
-            <li><%= link_to "Log In", login_path %></li>
+            <li><%= link_to "Cadastre-se", signup_path(:type=> "consumer") %></li>
+            <li>ou</li>
+            <li><%= link_to "Conecte-se", login_path %></li>
         <% end %>  
       </ul>
     </div>
@@ -17,16 +16,15 @@
       <ul class="tabs tabs-transparent">
           <% if current_user %>
             <% if current_user.tipo==1 %>
-                <li class="tab"><a href="#test1">Produtos</a></li>
-                <li class="tab"><a class="active" href="#test2">Pedidos</a></li>
+                <li class="tab"><a class="active" href="/">Produtos</a></li>
+                <li class="tab"><a href="#test2">Pedidos</a></li>
                 <li class="tab disabled"><a href="#test3">Carrinho</a></li>
                 <li class="tab"><a href="#test4">Minha conta</a></li>
             <% end %> 
             <% if current_user.tipo==0 %>
-                <li class="tab"><a href="#test1">Produtos</a></li>
-                <li class="tab"><a class="active" href="#test2">Pedidos</a></li>
+                <li class="tab"><a class="active" href="/">Produtos</a></li>
+                <li class="tab"><a href="#test2">Pedidos</a></li>
                 <li class="tab disabled"><a href="#test3">Adicionar produto</a></li>
-                <li class="tab"><a href="#test4">Test 4</a></li>
             <% end %> 
           <% end %>
       </ul>
@@ -36,11 +34,11 @@
   <ul class="sidenav" id="mobile-demo">
     <% if current_user %>
         <li>Bem vindo, <%= current_user.nome %></li>
-        <li><%= link_to "Log Out", logout_path %></li>
+        <li><%= link_to "Sair", logout_path %></li>
     <% else %>
-        <li><%= link_to "Sign Up", signup_path %></li>
+        <li><%= link_to "Cadastre-se", signup_path %></li>
         <li> or</li>
-        <li><%= link_to "Log In", login_path %></li>
+        <li><%= link_to "Conecte-se", login_path %></li>
     <% end %>    
   </ul>
 

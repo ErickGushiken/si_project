@@ -38,18 +38,19 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        # format.html { redirect_to @user, notice: 'User was successfully created.' }
         user = User.find_by_email(@user.email)
           if user && user.authenticate(@user.password)
+            # Caso o email e a senha estejam corretos criamos a sessão do usuário
             session[:user_id] = @user.id
-            # redirect_to root_url, notice: "Logged in!"
             format.html { redirect_to root_url, notice: 'User was successfully created.' }
             format.json { render :show, status: :created, location: @user }
           else
+            # Teoricamente esse else nunca será chamado, uma vez que esse login ocorre direto com as informações que acabaram de ser salvas
             format.html { redirect_to root_url, notice: 'User was successfully created.' }
             format.json { render :show, status: :created, location: @user }
           end
       else
+        # Volta para a tela new e mostra os erros
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
