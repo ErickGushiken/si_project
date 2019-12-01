@@ -12,17 +12,23 @@
 
 
     <div class="pa3">
-
+      
       <p class="fw7 f4 title"><%= link_to produto.nome, produto %></p>
 
       <p class="f3 fw6 has-text-right pt2 valor"><%= number_to_currency(produto.valor) %></p>
 
-      <%= link_to 'Edit', edit_produto_path(produto), class: "button is-small" %>
-      <%= link_to 'Delete', produto, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
-      
+      <% if current_user %>
+            <% if current_user.tipo==2 %>
+              <%= link_to 'Delete', produto, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
+            <% end %> 
+            <% if current_user.tipo==0 %>
+              <%= link_to 'Edit', edit_produto_path(produto), class: "button is-small" %>
+              <%= link_to 'Delete', produto, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
+            <% end %> 
+            <% if current_user.tipo==1 %>
+            <% end %> 
+      <% end %>
     </div>
   </div>
   <% end %>
 </div>
-
-<%= link_to 'New Produto', new_produto_path %>

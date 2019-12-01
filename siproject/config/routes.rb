@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :produtos
-  root 'home#index'
+  root 'produtos#index'
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
