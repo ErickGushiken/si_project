@@ -1,0 +1,60 @@
+<%= form_with(model: produto, local: true) do |form| %>
+  <% if produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+
+      <ul>
+      <% produto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+    <span class="helper-text"><% produto.errors[:nome].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Descrição' %>
+    <%= form.text_area :descricao %>
+    <span class="helper-text"><% produto.errors[:descricao].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
+  </div>
+
+  <div class="field">
+    <%= form.label "Preço" %>
+    <%= form.text_field :valor %>
+    <span class="helper-text"><% produto.errors[:valor].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
+  </div>
+
+  <div class="field">
+    <%= form.label :categoria %>
+    <%= form.text_field :categoria %>
+    <span class="helper-text"><% produto.errors[:categoria].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions center-align">
+    <button class="btn waves-effect waves-light" type="submit" name="action">Adicionar produto
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
+<% end %>
