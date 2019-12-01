@@ -20,15 +20,15 @@
               <li class="tab"><a href="/users">Usuários</a></li>
             <% end %> 
             <% if current_user.tipo==1 %>
-                <li class="tab"><a class="active" href="/">Produtos</a></li>
+                <li class="tab"><%= link_to "Produtos", produtos_path %></li>
                 <li class="tab"><a href="#test2">Pedidos</a></li>
                 <li class="tab disabled"><a href="#test3">Carrinho</a></li>
                 <li class="tab"><a href="#test4">Minha conta</a></li>
             <% end %> 
             <% if current_user.tipo==0 %>
-                <li class="tab"><a class="active" href="/">Produtos</a></li>
+                <li class="tab"><%= link_to "Produtos", produtos_path %></li>
                 <li class="tab"><a href="#test2">Pedidos</a></li>
-                <li class="tab disabled"><a href="#test3">Adicionar produto</a></li>
+                <li class="tab"><%= link_to "Adicionar produto", new_produto_path %></li>
             <% end %> 
           <% end %>
       </ul>

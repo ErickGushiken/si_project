@@ -1,23 +1,22 @@
 <p id="notice"><%= notice %></p>
+<%= render "layouts/header" %>
 
-<p>
-  <strong>Imagem:</strong>
-  <%= @produto.image %>
-</p>
-
-<p>
-  <strong>Nome:</strong>
+<h2>
   <%= @produto.nome %>
-</p>
+</h2>
+
+<div class="produto-thumb">
+      <%= image_tag(@produto.image_url(:thumb)) %>
+</div>
 
 <p>
-  <strong>Descricao:</strong>
+  <strong>Descrição:</strong>
   <%= @produto.descricao %>
 </p>
 
 <p>
-  <strong>Valor:</strong>
-  <%= @produto.valor %>
+  <strong>Preço:</strong>
+  <%= number_to_currency(@produto.valor) %>
 </p>
 
 <p>

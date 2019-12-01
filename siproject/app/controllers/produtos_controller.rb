@@ -1,10 +1,11 @@
 class ProdutosController < ApplicationController
   before_action :set_produto, only: [:show, :edit, :update, :destroy]
+  #before_action :authenticate_user!, except: [:index, :show]
 
   # GET /produtos
   # GET /produtos.json
   def index
-    @produtos = Produto.all
+    @produtos = Produto.all.order("created_at desc")
   end
 
   # GET /produtos/1
