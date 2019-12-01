@@ -3,23 +3,23 @@
         <div class="form-container">
             <div class="image-container">
                 <%= link_to "Marktplatz", root_path, class:"header center orange-text root-logo" %> 
-                <% if @user_role==1 %>
+                <% if @user.tipo==1 %>
                     <%= image_tag 'seller-cartoon.png', class:'image' %>
                 <% end %>            
-                <% if @user_role==0 %>
+                <% if @user.tipo==0 %>
                     <%= image_tag 'shop-cartoon.png', class:'image' %>
                 <% end %>
             </div>
             <div class="form">
-                <%= render 'form', user: @user, user_role: @user_role %>   
+                <%= render 'form', user: @user, user_role: @user.tipo %>   
             </div>
         </div>
         <div class="horizontal-line"></div>
         <div class="options-row">
-            <% if @user_role==0 %>
+            <% if @user.tipo==0 %>
                 <%= link_to "Cadastre-se como comprador", signup_path(:type=> "consumer"), class:"waves-effect waves-light btn-small center-align" %> 
             <% end %>
-            <% if @user_role==1 %>
+            <% if @user.tipo==1 %>
                 <%= link_to "Cadastre-se como vendedor", signup_path(:type=> "seller"), class:"waves-effect waves-light btn-small" %> 
             <% end %> 
             <br>

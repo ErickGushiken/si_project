@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   layout 'application', :except => [:new]
-
+  # No caso de uma página que só pode ser acessada por admin chamar essa função is_admin
+  before_action :is_admin, only: [:index]
+  
   # GET /users
   # GET /users.json
   def index
@@ -17,9 +19,9 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     if params[:type] == 'seller'
-      @user_role = 0
+      @user.tipo = 0
     else
-      @user_role = 1
+      @user.tipo = 1
     end
   end
 
@@ -45,13 +47,14 @@ class UsersController < ApplicationController
             format.html { redirect_to root_url, notice: 'User was successfully created.' }
             format.json { render :show, status: :created, location: @user }
           else
-            # Teoricamente esse else nunca será chamado, uma vez que esse login ocorre direto com as informações que acabaram de ser salvas
+            # Teoricamente esse else nunca será chamado, uma vez que esse login ocorre direto com as informações que acabaram de ser salvas, mas sempre bom tratar algum erro
+            session[:user_id] = @user.id
             format.html { redirect_to root_url, notice: 'User was successfully created.' }
             format.json { render :show, status: :created, location: @user }
           end
       else
         # Volta para a tela new e mostra os erros
-        format.html { render :new }
+        format.html { render :new}
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

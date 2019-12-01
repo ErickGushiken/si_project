@@ -1,52 +1,65 @@
 <%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :email %>
     <%= form.text_field :email %>
+    <span class="helper-text"><% user.errors[:email].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
   </div>
 
   <div class="field">
     <%= form.label :nome %>
     <%= form.text_field :nome %>
+    <span class="helper-text"><% user.errors[:nome].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
   </div>
 
   <div class="field">
     <%= form.label 'Data de nascimento: ' %>
     <%= form.text_field :data_nasc, 'data-behaviour' => 'datepicker' %><br />
+    <span class="helper-text"><% user.errors[:data_nasc].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
   </div>  
 
   <div class="field">
-    <% if @user_role==0 %>
+    <% if @user.tipo==1 %>
       <%= form.label 'CPF:' %>
     <% end %>
-    <% if @user_role==1 %>
+    <% if @user.tipo==0 %>
       <%= form.label 'CNPJ: ' %>
     <% end %>
     <%= form.text_field :documento %>
+    <span class="helper-text"><% user.errors[:documento].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
   </div>
 
   <div class="field">
   <%= form.label 'Senha: ' %>
     <%= form.password_field :password %>
+    <span class="helper-text"><% user.errors[:password].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
   </div>
 
   <div class="field">
   <%= form.label 'Confirmação de senha: ' %>
     <%= form.password_field :password_confirmation %>
+    <span class="helper-text"><% user.errors[:password_confirmation].each do |message| %>
+        <%= message %>
+      <% end %>
+    </span>
   </div>
 
-  <%= form.hidden_field :tipo, :value => @user_role %>
+  <%= form.hidden_field :tipo, :value => @user.tipo %>
   
   <div class="actions center-align">
     <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
