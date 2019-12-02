@@ -1,7 +1,7 @@
 class ProdutosController < ApplicationController
   before_action :set_produto, only: [:show, :edit, :update, :destroy]
   before_action :is_seller, only: [:new, :edit, :destroy]
-  before_action :is_admin, only: [:destroy]
+
   # GET /produtos
   # GET /produtos.json
   def index
