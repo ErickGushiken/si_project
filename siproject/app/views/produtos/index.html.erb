@@ -22,26 +22,12 @@
               <%= link_to 'Delete', produto, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
             <% end %> 
             <% if current_user.tipo==0 %>
-              <%= link_to 'Edit', edit_produto_path(produto), class: "button is-small" %>
-              <%= link_to 'Delete', produto, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
+              <% if current_user.documento == produto.user_id %>
+                <%= link_to 'Edit', edit_produto_path(produto), class:"btn waves-effect" %>
+                <%= link_to 'Delete', produto, method: :delete, data: { confirm: "Are you sure ?" }, class:"btn waves-effect" %>
+              <% end %>
             <% end %> 
             <% if current_user.tipo==1 %>
-              <p id="notice"><%= notice %></p>
-              <h1> Seu Catalogo </h1>
-              <% cache @produtos do %>
-                <% @produtos.each do |produto| %>
-                  <% cache produto do %>
-                    <div class="entry">
-                      <h3><%= produto.nome %></h3>
-                      <%= sanitize(produto.descricao) %>
-                      <div class="valor_line">
-                        <span class="valor"><%= number_to_currency(produto.valor) %></span>
-                        <%= button_to "Adicionar ao Carrinho", line_items_path(produto_id:produto) %>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
-              <% end %>
             <% end %>
       <% end %>
     </div>

@@ -52,6 +52,8 @@
     <%= form.file_field :image %>
   </div>
 
+  <%= form.hidden_field :user_id, :value => @current_user.documento %>
+
   <div class="actions center-align">
     <button class="btn waves-effect waves-light" type="submit" name="action">Adicionar produto
       <i class="material-icons right">send</i>

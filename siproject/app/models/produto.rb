@@ -7,12 +7,10 @@ class Produto < ApplicationRecord
     serialize :image, JSON
     belongs_to :user, optional: true
 
-    validates :nome, :descricao, :valor, :categoria, :image, presence: true
+    validates :nome, :descricao, :valor, :categoria, :image, :user_id, presence: true
     validates :descricao, length: { maximum: 1000, too_long: "%{count} characters is the maximum aloud. "}
     validates :nome, length: { maximum: 140, too_long: "%{count} characters is the maximum aloud. "}
     validates :valor, length: { maximum: 7 }, numericality: true
-
-    CATEGORIA = %w{ Imagem Cards Trabalho }
 
     private
 
