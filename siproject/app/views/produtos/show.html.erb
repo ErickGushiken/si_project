@@ -34,6 +34,21 @@
   <% end %> 
   <% if current_user.tipo==1 %>
     <a href="#!" class="btn waves-effect waves-teal">Adicionar ao carrinho</a>
+    <p id="notice"><%= notice %></p>
+    <% cache @produtos do %>
+      <% @produtos.each do |produto| %>
+        <% cache produto do %>
+          <div class="entry">
+            <h3><%= produto.nome %></h3>
+            <%= sanitize(produto.descricao) %>
+            <div class="valor_line">
+              <span class="valor"><%= number_to_currency(produto.valor) %></span>
+              <%= button_to "Adicionar ao Carrinho", line_items_path(produto_id:produto) %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %> 
 <% end %>
 
