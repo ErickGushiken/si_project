@@ -1,6 +1,19 @@
-<h1>Editing Produto</h1>
+<%= render "layouts/header" %>
 
-<%= render 'form', produto: @produto %>
+<h1>Editar produto</h1>
 
-<%= link_to 'Show', @produto %> |
-<%= link_to 'Back', produtos_path %>
+<div id="produto">
+    <div class="card-produto">
+        <div class="form-container">
+            <div class="form">
+                <%= render 'form', produto: @produto %>   
+            </div>
+        </div>
+        <div class="horizontal-line"></div>
+        <div class="options-row">
+            <br>
+            <%= link_to 'Voltar', produtos_path, class:"waves-effect waves-light btn-small" %>
+            <br>
+        </div> 
+    </div>
+</div>
